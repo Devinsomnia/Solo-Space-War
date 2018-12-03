@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  EndScene.swift
 //  Solo Space War
 //
 //  Created by Tuncay Cansız on 3.12.2018.
@@ -8,14 +8,14 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
-
+class EndScene: SKScene{
+    
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.gray
+        backgroundColor = UIColor.cyan
         
-        let end = labelNode(fontName: "effra-heavy", fontText: "Go to End Scene", fontSize: 100, fontColorBlendFactor: 1, fontColor: UIColor.white, fontXPoz: self.size.width / 2, fontYPoz: self.size.height / 2, fontZPoz: 1)
-        end.name = "endScaneLabel"
-        self.addChild(end)
+        let start = labelNode(fontName: "effra-heavy", fontText: "Go to Start Scene", fontSize: 100, fontColorBlendFactor: 1, fontColor: UIColor.white, fontXPoz: self.size.width / 2, fontYPoz: self.size.height / 2, fontZPoz: 1)
+        start.name = "startScene"
+        self.addChild(start)
     }
     
     
@@ -26,13 +26,13 @@ class GameScene: SKScene {
             let tappedNode = atPoint(pointOfTouch)
             let nameOfTappedNode = tappedNode.name
             
-            if nameOfTappedNode == "endScaneLabel"{
+            if nameOfTappedNode == "startScene"{
                 
                 tappedNode.name = ""
                 tappedNode.removeAllActions()
                 
                 tappedNode.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 0.2),SKAction.fadeAlpha(to: 1.0, duration: 0.15) ]), completion: {
-                    let sceneMovement = EndScene(size: self.size)
+                    let sceneMovement = MainScene(size: self.size)
                     sceneMovement.scaleMode = self.scaleMode
                     
                     let sceneTransition = SKTransition.reveal(with: SKTransitionDirection.left, duration: 0.5)
