@@ -10,12 +10,27 @@ import SpriteKit
 
 class MainScene: SKScene{
     override func didMove(to view: SKView) {
-        backgroundColor = UIColor.black
         
-        let start = labelNode(fontName: "effra-heavy", fontText: "Go to Game Scane", fontSize: 100, fontColorBlendFactor: 1, fontColor: UIColor.white, fontXPoz: self.size.width / 2, fontYPoz: self.size.height / 2, fontZPoz: 1)
-        start.name = "startLabel"
-        self.addChild(start)
         
+        let backgroundImage = spriteNode(imageName: "GamePlay_BG_Blur", valueName: "backgroundBluur", positionZ: 0, positionX: Device.screenWidth * 0.5, positionY: Device.screenHeight * 0.5)
+        self.addChild(backgroundImage)
+        
+        let gameLogo = spriteNode(imageName: "SpaceWarLogo", valueName: "spaceWarLogo", positionZ: 1, positionX: Device.screenWidth * 0.5, positionY: Device.screenHeight * 0.75)
+        gameLogo.setScale(0.5)
+        self.addChild(gameLogo)
+
+
+        let startButton = spriteNode(imageName: "StartButton", valueName: "startButton", positionZ: 1, positionX: Device.screenWidth * 0.5, positionY: Device.screenHeight * 0.5)
+        startButton.setScale(0.5)
+        self.addChild(startButton)
+
+        let earth = spriteNode(imageName: "Earth_Blur", valueName: "earth", positionZ: 1, positionX: Device.screenWidth * 0.5, positionY: Device.screenHeight * 0.1)
+        earth.setScale(0.65)
+        self.addChild(earth)
+        
+        let moon = spriteNode(imageName: "Moon_Blur", valueName: "moon", positionZ: 1, positionX: Device.screenWidth * 0.8, positionY: Device.screenHeight * 0.6)
+        moon.setScale(0.65)
+        self.addChild(moon)
         
     }
     
@@ -26,7 +41,7 @@ class MainScene: SKScene{
             let tappedNode = atPoint(pointOfTouch)
             let nameOfTappedNode = tappedNode.name
         
-            if nameOfTappedNode == "startLabel"{
+            if nameOfTappedNode == "startButton"{
                 
                 tappedNode.name = ""
                 tappedNode.removeAllActions()
