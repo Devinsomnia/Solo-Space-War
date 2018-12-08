@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
         print("screen width  : \(Device.screenWidth)")
         print("screen height : \(Device.screenHeight)")
         
-        let scene = MainScene(size: CGSize(width: Device.screenWidth, height: Device.screenHeight))
+        let scene = MainScene(size: CGSize(width: 1357, height: 2410))
 
         let skView = self.view as! SKView
         skView.showsFPS = false

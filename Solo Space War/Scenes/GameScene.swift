@@ -35,7 +35,9 @@ class GameScene: SKScene {
                     let sceneMovement = EndScene(size: self.size)
                     sceneMovement.scaleMode = self.scaleMode
                     
-                    let sceneTransition = SKTransition.reveal(with: SKTransitionDirection.left, duration: 0.5)
+                    let sceneTransition = SKTransition.fade(withDuration: 0.5)
+                        
+                        //SKTransition.reveal(with: SKTransitionDirection.left, duration: 0.5)
                     self.view!.presentScene(sceneMovement, transition: sceneTransition)
                 })
             }
