@@ -16,6 +16,8 @@ class GameScene: SKScene {
     
     
     
+    
+    //oyun alanı oluşturuldu.
     var gameArea : CGRect
     
     override init(size: CGSize) {
@@ -42,9 +44,13 @@ class GameScene: SKScene {
         spaceShip = spriteNode(imageName: "SpaceShip", valueName: "SpaceShip", positionZ: 2, positionX: self.size.width * 0.5, positionY: self.size.height * 0.2)
         spaceShip.setScale(0.85)
         self.addChild(spaceShip)
+        
+        
+        spawnObjectLevel()
     }
     
     
+    //uzay mekiğine mermi eklendi
     func fireBullet(){
         let bullet = spriteNode(imageName: "Bullet", valueName: "Bullet", positionZ: 1, positionX: spaceShip.position.x, positionY: spaceShip.position.y)
         self.addChild(bullet)
@@ -55,10 +61,49 @@ class GameScene: SKScene {
         bullet.run(bulletSquence)
     }
     
+    //uzayda yok edilmesi gereken nesneler ve sağlık kazanmak amacıyla kurtarılması gereken astronot
+    func spawnSpaceObject(){
+        
+        let randomXStart = random(min: gameArea.minX, max: gameArea.maxX)
+        let randomXEnd = random(min: gameArea.minX, max: gameArea.maxX)
+        
+        let startPoint = CGPoint(x: randomXStart, y: self.size.height * 1.2)
+        let endPoint = CGPoint(x: randomXEnd, y: -self.size.height * 0.2)
+        
+        
+        let spawnObject = spriteNode(imageName: "SpawnObject6", valueName: "SpawnObject", positionZ: 2, positionX: startPoint.x, positionY: startPoint.y)
+        self.addChild(spawnObject)
+        
+        let moveSpawnObject = SKAction.move(to: endPoint, duration: 1.5)
+        let deleteSpawnObject = SKAction.removeFromParent()
+        let spawnObjectSequence = SKAction.sequence([moveSpawnObject, deleteSpawnObject])
+        
+        spawnObject.run(spawnObjectSequence)
+        
+        
+        let dX = endPoint.x - startPoint.x
+        let dY = endPoint.y - startPoint.y
+        let amountToRotate = atan2(dX, dY)
+        spawnObject.zRotation = amountToRotate
+        
+        
+    }
+    
+    //uzayda yok edilmesi gereken nesneler için zorluk seviyesi
+    func spawnObjectLevel(){
+        let spawn = SKAction.run(spawnSpaceObject)
+        let waitToSpawn = SKAction.wait(forDuration: 1)
+        let spawnSequence = SKAction.sequence([spawn,waitToSpawn])
+        let spawnForever = SKAction.repeatForever(spawnSequence)
+        self.run(spawnForever)
+    }
+    
     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        
+        //uzay mekiğinin sahne üzerinde ki pozisyonları belirlendi.
         for touch : AnyObject in touches{
             let pointOfTouch = touch.location(in: self)
             let previousPointOfTouch = touch.previousLocation(in: self)
@@ -80,7 +125,8 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-            fireBullet()
+        fireBullet()
+        //spawnSpaceObject()
         
         for touch: AnyObject in touches{
             
