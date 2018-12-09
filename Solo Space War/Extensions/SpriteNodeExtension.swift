@@ -9,7 +9,7 @@
 import  SpriteKit
 
 
-func spriteNode(imageName: String, valueName: String, positionZ: CGFloat, positionX: CGFloat, positionY: CGFloat)-> SKNode{
+func spriteNode(imageName: String, valueName: String, positionZ: CGFloat, positionX: CGFloat, positionY: CGFloat)-> SKSpriteNode{
     
     let sprite = SKSpriteNode(imageNamed: "\(imageName)")
     sprite.name = valueName

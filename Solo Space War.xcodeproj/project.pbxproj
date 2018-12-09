@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F71893B621BD1C9400D97EFB /* bulletSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B521BD1C9400D97EFB /* bulletSound.m4a */; };
+		F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893B721BD21C100D97EFB /* RandomFunc.swift */; };
 		F73C649C21B59B0000CE4138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C649B21B59B0000CE4138 /* AppDelegate.swift */; };
 		F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A121B59B0000CE4138 /* GameScene.swift */; };
 		F73C64A421B59B0000CE4138 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A321B59B0000CE4138 /* GameViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F71893B521BD1C9400D97EFB /* bulletSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bulletSound.m4a; sourceTree = "<group>"; };
+		F71893B721BD21C100D97EFB /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
 		F73C649821B59B0000CE4138 /* Solo Space War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solo Space War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F73C649B21B59B0000CE4138 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F73C64A121B59B0000CE4138 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -53,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F71893B421BD1C7400D97EFB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F71893B521BD1C9400D97EFB /* bulletSound.m4a */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		F73C648F21B59B0000CE4138 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +84,7 @@
 		F73C649A21B59B0000CE4138 /* Solo Space War */ = {
 			isa = PBXGroup;
 			children = (
+				F71893B421BD1C7400D97EFB /* Sounds */,
 				F73C64BB21B5B53F00CE4138 /* Fonts */,
 				F73C64B421B59E7400CE4138 /* Extensions */,
 				F73C64B321B59E6E00CE4138 /* Scenes */,
@@ -101,6 +114,7 @@
 				F73C64B721B5B4C100CE4138 /* LabelNodeExtension.swift */,
 				F73C64B921B5B4D100CE4138 /* SpriteNodeExtension.swift */,
 				F73C64C421B7731200CE4138 /* DeviceControl.swift */,
+				F71893B721BD21C100D97EFB /* RandomFunc.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -173,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71893B621BD1C9400D97EFB /* bulletSound.m4a in Resources */,
 				F73C64C121B5B5CC00CE4138 /* effra-light.ttf in Resources */,
 				F73C64A721B59B0000CE4138 /* Main.storyboard in Resources */,
 				F73C64BF21B5B5CC00CE4138 /* effra-heavy.ttf in Resources */,
@@ -193,6 +208,7 @@
 				F73C64C321B5B89300CE4138 /* EndScene.swift in Sources */,
 				F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */,
 				F73C64B621B59E8C00CE4138 /* MainScene.swift in Sources */,
+				F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */,
 				F73C64B821B5B4C100CE4138 /* LabelNodeExtension.swift in Sources */,
 				F73C64A421B59B0000CE4138 /* GameViewController.swift in Sources */,
 				F73C649C21B59B0000CE4138 /* AppDelegate.swift in Sources */,
