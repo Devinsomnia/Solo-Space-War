@@ -8,13 +8,19 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     var spaceShip = SKSpriteNode()
     let bulletSound = SKAction.playSoundFileNamed("bulletSound.m4a", waitForCompletion: false)
     
     
+    struct  PhysicsCategories{
+        static let None: UInt32 = 0
+        static let SpaceShip: UInt32 = 0b1 //1
+        static let Bullet: UInt32 = 0b10      //2
+        static let SpaceObject: UInt32 = 0b100   //4
+    }
     
     
     //oyun alanı oluşturuldu.
@@ -37,12 +43,21 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
+        self.physicsWorld.contactDelegate = self
+        
         let background = spriteNode(imageName: "GamePlay_BG", valueName: "GamePlay_BG", positionZ: 0, positionX: self.size.width * 0.5, positionY: self.size.height * 0.5)
         
         self.addChild(background)
         
         spaceShip = spriteNode(imageName: "SpaceShip", valueName: "SpaceShip", positionZ: 2, positionX: self.size.width * 0.5, positionY: self.size.height * 0.2)
         spaceShip.setScale(0.85)
+        
+        spaceShip.physicsBody = SKPhysicsBody(rectangleOf: spaceShip.size)
+        spaceShip.physicsBody!.affectedByGravity = false
+        spaceShip.physicsBody!.categoryBitMask = PhysicsCategories.SpaceShip
+        spaceShip.physicsBody!.collisionBitMask = PhysicsCategories.None
+        spaceShip.physicsBody!.contactTestBitMask = PhysicsCategories.SpaceObject
+        
         self.addChild(spaceShip)
         
         
@@ -50,9 +65,50 @@ class GameScene: SKScene {
     }
     
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        var body1 = SKPhysicsBody()
+        var body2 = SKPhysicsBody()
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask{
+            
+            body1 = contact.bodyA
+            body2 = contact.bodyB
+        }
+        else{
+            body1 = contact.bodyB
+            body2 = contact.bodyA
+        }
+        
+        if body1.categoryBitMask == PhysicsCategories.SpaceShip && body2.categoryBitMask == PhysicsCategories.SpaceObject{
+            //Oyuncu asteroide vurduğunda olacaklar
+            
+            
+            
+            body1.node?.removeFromParent()
+            body2.node?.removeFromParent()
+
+            
+        }
+        
+        if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.SpaceObject && body2.node!.position.y < self.size.height{
+            //Mermi asteroide vurduğunda olacaklar
+            
+            body1.node?.removeFromParent()
+            body2.node?.removeFromParent()
+        }
+    }
+    
+    
     //uzay mekiğine mermi eklendi
     func fireBullet(){
         let bullet = spriteNode(imageName: "Bullet", valueName: "Bullet", positionZ: 1, positionX: spaceShip.position.x, positionY: spaceShip.position.y)
+        
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
+        bullet.physicsBody!.affectedByGravity = false
+        bullet.physicsBody!.categoryBitMask = PhysicsCategories.Bullet
+        bullet.physicsBody!.collisionBitMask = PhysicsCategories.None
+        bullet.physicsBody!.contactTestBitMask = PhysicsCategories.SpaceObject
+        
         self.addChild(bullet)
         
         let moveBullet = SKAction.moveTo(y: self.size.height + bullet.size.height, duration: 1)
@@ -72,6 +128,13 @@ class GameScene: SKScene {
         
         
         let spawnObject = spriteNode(imageName: "SpawnObject6", valueName: "SpawnObject", positionZ: 2, positionX: startPoint.x, positionY: startPoint.y)
+        
+        spawnObject.physicsBody = SKPhysicsBody(rectangleOf: spawnObject.size)
+        spawnObject.physicsBody!.affectedByGravity = false
+        spawnObject.physicsBody!.categoryBitMask = PhysicsCategories.SpaceObject
+        spawnObject.physicsBody!.collisionBitMask = PhysicsCategories.None
+        spawnObject.physicsBody!.contactTestBitMask = PhysicsCategories.SpaceShip | PhysicsCategories.Bullet
+        
         self.addChild(spawnObject)
         
         let moveSpawnObject = SKAction.move(to: endPoint, duration: 1.5)
