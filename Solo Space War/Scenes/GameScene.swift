@@ -10,9 +10,22 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
+    var gameScore = 0
+    var gameScoreLabel = SKLabelNode()
+    
+    var livesNumber = 3
+    var livesLabel = SKLabelNode()
+    
+    
+    var levelNumber = 0
+    
+    var TextureAtlas = SKTextureAtlas()
+    var TextureArray = [SKTexture]()
+    
     
     var spaceShip = SKSpriteNode()
     let bulletSound = SKAction.playSoundFileNamed("bulletSound.m4a", waitForCompletion: false)
+    let explosionSound = SKAction.playSoundFileNamed("explosionSound2.m4a", waitForCompletion: false)
     
     
     struct  PhysicsCategories{
@@ -58,14 +71,83 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceShip.physicsBody!.collisionBitMask = PhysicsCategories.None
         spaceShip.physicsBody!.contactTestBitMask = PhysicsCategories.SpaceObject
         
+        
+        //spawnExpLosion(spawnPosition: spaceShip.position)
         self.addChild(spaceShip)
         
+//        let localgif = SKSpriteNode()
+//        localgif.size = CGSize(width: 1, height: 1) * size
+//        localgif.position = CGPoint(x: 0.5, y: 0.35) * size
+//        addChild(localgif)
+//
+//
+//        //spawnExpLosion(spawnPosition: spaceShip.position)
+//
+//        // call the function to load the file in main bundle to animate the gif
+//        // currently each texture is animating for 0.1 sec
+//        localgif.animateWithLocalGIF(fileNamed: "anigif")
         
         spawnObjectLevel()
+        
+        
+//        var denek = SKSpriteNode()
+//
+//        for i in 0...178{
+//            denek = SKSpriteNode(imageNamed: "explosion\(i)")
+//            denek.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.5)
+//            denek.zPosition = 3
+//
+//        }
+//        self.addChild(denek)
+        
+        
+//        TextureAtlas = SKTextureAtlas(named: "explosionAtlas")
+//
+//        for i in 0...TextureAtlas.textureNames.count{
+//            let name = "explosion\(i).png"
+//            TextureArray.append(SKTexture(imageNamed: name))
+//        }
+//
+//        let explosion = SKSpriteNode(imageNamed: TextureAtlas.textureNames[0] )
+//        explosion.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.5)
+//        self.addChild(explosion)
+        
+        
+        gameScoreLabel = labelNode(fontName: "effra-heavy", fontText: "Score: 0", fontSize: 70, fontColorBlendFactor: 1, fontColor: UIColor.white, fontXPoz: self.size.width * 0.15, fontYPoz: self.size.height * 0.9, fontZPoz: 100)
+        gameScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        self.addChild(gameScoreLabel)
+        
+        
+        livesLabel = labelNode(fontName: "effra-heavy", fontText: "Lives: 3", fontSize: 70, fontColorBlendFactor: 1, fontColor: UIColor.white, fontXPoz: self.size.width * 0.95, fontYPoz: self.size.height * 0.9, fontZPoz: 100)
+        livesLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
+        self.addChild(livesLabel)
+        
+        
+    }
+    
+    func loseALife(){
+        livesNumber -= 1
+        livesLabel.text = "Lives: \(livesNumber)"
+        
+        let scaleUp = SKAction.scale(to: 1.5, duration: 0.2)
+        let scaleDown = SKAction.scale(to: 1, duration: 0.2)
+        let scaleSequence = SKAction.sequence([scaleUp,scaleDown])
+        livesLabel.run(scaleSequence)
+    }
+    
+    func addScore(){
+        gameScore += 1
+        gameScoreLabel.text = "Score: \(gameScore)"
+        
+        if gameScore == 10 || gameScore == 25 || gameScore == 50 {
+            spawnObjectLevel()
+        }
+        
     }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
         var body1 = SKPhysicsBody()
         var body2 = SKPhysicsBody()
         
@@ -82,21 +164,62 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if body1.categoryBitMask == PhysicsCategories.SpaceShip && body2.categoryBitMask == PhysicsCategories.SpaceObject{
             //Oyuncu asteroide vurduğunda olacaklar
             
-            
+            if body1.node != nil{
+                spawnExpLosion(spawnPosition: body1.node!.position)
+            }
+                
+            else if body2.node != nil{
+                spawnExpLosion(spawnPosition: body2.node!.position)
+            }
             
             body1.node?.removeFromParent()
             body2.node?.removeFromParent()
-
+            
+//            lossALife()
+//            if livesNumber == 0 {
+//                runGameOver()
+//            }
             
         }
         
         if body1.categoryBitMask == PhysicsCategories.Bullet && body2.categoryBitMask == PhysicsCategories.SpaceObject && body2.node!.position.y < self.size.height{
             //Mermi asteroide vurduğunda olacaklar
             
+            addScore()
+            
+            if body2.node != nil{
+                spawnExpLosion(spawnPosition: body2.node!.position)
+            }
+            
             body1.node?.removeFromParent()
             body2.node?.removeFromParent()
         }
+        
     }
+    
+    
+    func spawnExpLosion(spawnPosition: CGPoint){
+        
+        let explosion = SKSpriteNode(imageNamed: "denek2")
+        
+        
+        
+        explosion.position = spawnPosition
+        explosion.zPosition = 3
+        explosion.setScale(0)
+        self.addChild(explosion)
+        
+        let scaleIn = SKAction.scale(to: 1, duration: 0.5)
+        let fadeOut = SKAction.fadeOut(withDuration: 0.5)
+        let delete = SKAction.removeFromParent()
+        
+        let explosionSequance = SKAction.sequence([explosionSound,scaleIn, fadeOut, delete])
+        explosion.run(explosionSequance)
+        
+        
+    }
+    
+
     
     
     //uzay mekiğine mermi eklendi
@@ -137,9 +260,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(spawnObject)
         
-        let moveSpawnObject = SKAction.move(to: endPoint, duration: 1.5)
+        let moveSpawnObject = SKAction.move(to: endPoint, duration: 2.5)
         let deleteSpawnObject = SKAction.removeFromParent()
-        let spawnObjectSequence = SKAction.sequence([moveSpawnObject, deleteSpawnObject])
+        let loseALifeAction = SKAction.run(loseALife)
+        let spawnObjectSequence = SKAction.sequence([moveSpawnObject, deleteSpawnObject, loseALifeAction])
         
         spawnObject.run(spawnObjectSequence)
         
@@ -154,11 +278,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //uzayda yok edilmesi gereken nesneler için zorluk seviyesi
     func spawnObjectLevel(){
+        
+        levelNumber += 1
+        
+        if self.action(forKey: "spawningObject") != nil{
+            self.removeAction(forKey: "spawningObject")
+        }
+        
+        var levelDuration = TimeInterval()
+        
+        switch levelNumber {
+        case 1: levelDuration = 1.2
+        case 2: levelDuration = 1
+        case 3: levelDuration = 0.8
+        case 4: levelDuration = 0.5
+        default:
+            levelDuration = 0.5
+            print("Cannot find level info")
+        }
+        
+        
         let spawn = SKAction.run(spawnSpaceObject)
-        let waitToSpawn = SKAction.wait(forDuration: 1)
-        let spawnSequence = SKAction.sequence([spawn,waitToSpawn])
+        let waitToSpawn = SKAction.wait(forDuration: levelDuration)
+        let spawnSequence = SKAction.sequence([waitToSpawn, spawn])
         let spawnForever = SKAction.repeatForever(spawnSequence)
-        self.run(spawnForever)
+        self.run(spawnForever, withKey: "spawningObject")
     }
     
     

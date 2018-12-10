@@ -10,6 +10,8 @@
 		F71893B621BD1C9400D97EFB /* bulletSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B521BD1C9400D97EFB /* bulletSound.m4a */; };
 		F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893B721BD21C100D97EFB /* RandomFunc.swift */; };
 		F71893BA21BD3A5000D97EFB /* explosionSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B921BD3A5000D97EFB /* explosionSound.m4a */; };
+		F71893C421BD5B2300D97EFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893C321BD5B2300D97EFB /* HelperFunctions.swift */; };
+		F71893C621BD5B4100D97EFB /* SKSpriteNode+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893C521BD5B4100D97EFB /* SKSpriteNode+GIF.swift */; };
 		F73C649C21B59B0000CE4138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C649B21B59B0000CE4138 /* AppDelegate.swift */; };
 		F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A121B59B0000CE4138 /* GameScene.swift */; };
 		F73C64A421B59B0000CE4138 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A321B59B0000CE4138 /* GameViewController.swift */; };
@@ -24,12 +26,15 @@
 		F73C64C121B5B5CC00CE4138 /* effra-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F73C64BE21B5B5CC00CE4138 /* effra-light.ttf */; };
 		F73C64C321B5B89300CE4138 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64C221B5B89300CE4138 /* EndScene.swift */; };
 		F73C64C521B7731200CE4138 /* DeviceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64C421B7731200CE4138 /* DeviceControl.swift */; };
+		F7A7B33621BE61E100C68B71 /* explosionSound2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F7A7B33521BE61E100C68B71 /* explosionSound2.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F71893B521BD1C9400D97EFB /* bulletSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bulletSound.m4a; sourceTree = "<group>"; };
 		F71893B721BD21C100D97EFB /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
 		F71893B921BD3A5000D97EFB /* explosionSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosionSound.m4a; sourceTree = "<group>"; };
+		F71893C321BD5B2300D97EFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		F71893C521BD5B4100D97EFB /* SKSpriteNode+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+GIF.swift"; sourceTree = "<group>"; };
 		F73C649821B59B0000CE4138 /* Solo Space War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solo Space War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F73C649B21B59B0000CE4138 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F73C64A121B59B0000CE4138 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		F73C64BE21B5B5CC00CE4138 /* effra-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "effra-light.ttf"; sourceTree = "<group>"; };
 		F73C64C221B5B89300CE4138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
 		F73C64C421B7731200CE4138 /* DeviceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControl.swift; sourceTree = "<group>"; };
+		F7A7B33521BE61E100C68B71 /* explosionSound2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosionSound2.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 			children = (
 				F71893B521BD1C9400D97EFB /* bulletSound.m4a */,
 				F71893B921BD3A5000D97EFB /* explosionSound.m4a */,
+				F7A7B33521BE61E100C68B71 /* explosionSound2.m4a */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -118,6 +125,8 @@
 				F73C64B921B5B4D100CE4138 /* SpriteNodeExtension.swift */,
 				F73C64C421B7731200CE4138 /* DeviceControl.swift */,
 				F71893B721BD21C100D97EFB /* RandomFunc.swift */,
+				F71893C321BD5B2300D97EFB /* HelperFunctions.swift */,
+				F71893C521BD5B4100D97EFB /* SKSpriteNode+GIF.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 			files = (
 				F71893B621BD1C9400D97EFB /* bulletSound.m4a in Resources */,
 				F73C64C121B5B5CC00CE4138 /* effra-light.ttf in Resources */,
+				F7A7B33621BE61E100C68B71 /* explosionSound2.m4a in Resources */,
 				F73C64A721B59B0000CE4138 /* Main.storyboard in Resources */,
 				F73C64BF21B5B5CC00CE4138 /* effra-heavy.ttf in Resources */,
 				F71893BA21BD3A5000D97EFB /* explosionSound.m4a in Resources */,
@@ -213,8 +223,10 @@
 				F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */,
 				F73C64B621B59E8C00CE4138 /* MainScene.swift in Sources */,
 				F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */,
+				F71893C421BD5B2300D97EFB /* HelperFunctions.swift in Sources */,
 				F73C64B821B5B4C100CE4138 /* LabelNodeExtension.swift in Sources */,
 				F73C64A421B59B0000CE4138 /* GameViewController.swift in Sources */,
+				F71893C621BD5B4100D97EFB /* SKSpriteNode+GIF.swift in Sources */,
 				F73C649C21B59B0000CE4138 /* AppDelegate.swift in Sources */,
 				F73C64C521B7731200CE4138 /* DeviceControl.swift in Sources */,
 			);
