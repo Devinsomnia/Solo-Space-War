@@ -12,6 +12,7 @@
 		F71893BA21BD3A5000D97EFB /* explosionSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B921BD3A5000D97EFB /* explosionSound.m4a */; };
 		F71893C421BD5B2300D97EFB /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893C321BD5B2300D97EFB /* HelperFunctions.swift */; };
 		F71893C621BD5B4100D97EFB /* SKSpriteNode+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893C521BD5B4100D97EFB /* SKSpriteNode+GIF.swift */; };
+		F7197ED721C0328200A1ACD0 /* theboldfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7197ED621C0328200A1ACD0 /* theboldfont.ttf */; };
 		F73C649C21B59B0000CE4138 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C649B21B59B0000CE4138 /* AppDelegate.swift */; };
 		F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A121B59B0000CE4138 /* GameScene.swift */; };
 		F73C64A421B59B0000CE4138 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64A321B59B0000CE4138 /* GameViewController.swift */; };
@@ -24,7 +25,7 @@
 		F73C64BF21B5B5CC00CE4138 /* effra-heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F73C64BC21B5B5CC00CE4138 /* effra-heavy.ttf */; };
 		F73C64C021B5B5CC00CE4138 /* effra-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F73C64BD21B5B5CC00CE4138 /* effra-medium.ttf */; };
 		F73C64C121B5B5CC00CE4138 /* effra-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F73C64BE21B5B5CC00CE4138 /* effra-light.ttf */; };
-		F73C64C321B5B89300CE4138 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64C221B5B89300CE4138 /* EndScene.swift */; };
+		F73C64C321B5B89300CE4138 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64C221B5B89300CE4138 /* GameOverScene.swift */; };
 		F73C64C521B7731200CE4138 /* DeviceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73C64C421B7731200CE4138 /* DeviceControl.swift */; };
 		F7A7B33621BE61E100C68B71 /* explosionSound2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F7A7B33521BE61E100C68B71 /* explosionSound2.m4a */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		F71893B921BD3A5000D97EFB /* explosionSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosionSound.m4a; sourceTree = "<group>"; };
 		F71893C321BD5B2300D97EFB /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		F71893C521BD5B4100D97EFB /* SKSpriteNode+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+GIF.swift"; sourceTree = "<group>"; };
+		F7197ED621C0328200A1ACD0 /* theboldfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = theboldfont.ttf; sourceTree = "<group>"; };
 		F73C649821B59B0000CE4138 /* Solo Space War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Solo Space War.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F73C649B21B59B0000CE4138 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F73C64A121B59B0000CE4138 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		F73C64BC21B5B5CC00CE4138 /* effra-heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "effra-heavy.ttf"; sourceTree = "<group>"; };
 		F73C64BD21B5B5CC00CE4138 /* effra-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "effra-medium.ttf"; sourceTree = "<group>"; };
 		F73C64BE21B5B5CC00CE4138 /* effra-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "effra-light.ttf"; sourceTree = "<group>"; };
-		F73C64C221B5B89300CE4138 /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
+		F73C64C221B5B89300CE4138 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		F73C64C421B7731200CE4138 /* DeviceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControl.swift; sourceTree = "<group>"; };
 		F7A7B33521BE61E100C68B71 /* explosionSound2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosionSound2.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +115,7 @@
 			children = (
 				F73C64A121B59B0000CE4138 /* GameScene.swift */,
 				F73C64B521B59E8C00CE4138 /* MainScene.swift */,
-				F73C64C221B5B89300CE4138 /* EndScene.swift */,
+				F73C64C221B5B89300CE4138 /* GameOverScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 				F73C64BC21B5B5CC00CE4138 /* effra-heavy.ttf */,
 				F73C64BE21B5B5CC00CE4138 /* effra-light.ttf */,
 				F73C64BD21B5B5CC00CE4138 /* effra-medium.ttf */,
+				F7197ED621C0328200A1ACD0 /* theboldfont.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				F73C64C121B5B5CC00CE4138 /* effra-light.ttf in Resources */,
 				F7A7B33621BE61E100C68B71 /* explosionSound2.m4a in Resources */,
 				F73C64A721B59B0000CE4138 /* Main.storyboard in Resources */,
+				F7197ED721C0328200A1ACD0 /* theboldfont.ttf in Resources */,
 				F73C64BF21B5B5CC00CE4138 /* effra-heavy.ttf in Resources */,
 				F71893BA21BD3A5000D97EFB /* explosionSound.m4a in Resources */,
 				F73C64C021B5B5CC00CE4138 /* effra-medium.ttf in Resources */,
@@ -219,7 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F73C64BA21B5B4D100CE4138 /* SpriteNodeExtension.swift in Sources */,
-				F73C64C321B5B89300CE4138 /* EndScene.swift in Sources */,
+				F73C64C321B5B89300CE4138 /* GameOverScene.swift in Sources */,
 				F73C64A221B59B0000CE4138 /* GameScene.swift in Sources */,
 				F73C64B621B59E8C00CE4138 /* MainScene.swift in Sources */,
 				F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */,

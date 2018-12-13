@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class EndScene: SKScene{
+class GameOverScene: SKScene{
     
     override func didMove(to view: SKView) {
         backgroundColor = UIColor.cyan

@@ -29,6 +29,7 @@
 		<string>effra-medium.ttf</string>
 		<string>effra-light.ttf</string>
 		<string>effra-heavy.ttf</string>
+		<string>theboldfont.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
