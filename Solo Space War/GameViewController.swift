@@ -9,11 +9,23 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GameKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Game Center Authantication login
+        authPlayer()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.showLeaderBoard), name: NSNotification.Name("showLeaderBoard"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.GCSaveHighScore), name: NSNotification.Name("GCSaveHighScore"), object: nil)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.showGlobalSkore), name: NSNotification.Name(rawValue:"showGlobalScore"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.kaydetScoreGS), name: NSNotification.Name(rawValue:"GSKAYDET"), object: nil)
+        
         
         print(Device.deviceModel)
         print("screen width  : \(Device.screenWidth)")
@@ -30,6 +42,56 @@ class GameViewController: UIViewController {
         scene.scaleMode = .fill
         
         skView.presentScene(scene)
+    }
+    
+    
+    // Game Center Save High Score
+    func saveHighScore(number: Int){
+        
+        if GKLocalPlayer.local.isAuthenticated{
+            
+            let scoreReported = GKScore(leaderboardIdentifier: "SWSBestScore")
+            scoreReported.value = Int64(number)
+            let scoreArray: [GKScore] = [scoreReported]
+            GKScore.report(scoreArray, withCompletionHandler: nil)
+
+        }
+    }
+    
+    @objc func GCSaveHighScore(){
+        saveHighScore(number: highScore)
+    }
+    
+    
+    //Game Center Show Leader Board
+    
+    @objc func showLeaderBoard(){
+        
+        let viewController = self.view.window?.rootViewController
+        let gcvc = GKGameCenterViewController()
+        
+        gcvc.gameCenterDelegate = self
+        viewController?.present(gcvc, animated: true, completion: nil)
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    //Game Center authantication
+    func authPlayer(){
+        let localPlayer = GKLocalPlayer.local
+        
+        localPlayer.authenticateHandler = {(viewController, error) -> Void in
+            if viewController != nil{
+                self.present(viewController!, animated: true, completion: nil)
+            }
+            else{
+                print((GKLocalPlayer.local.isAuthenticated))
+            }
+            
+        }
+        
     }
 
     override var shouldAutorotate: Bool {

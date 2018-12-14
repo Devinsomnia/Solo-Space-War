@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+var highScore = Int()
+
 class GameOverScene: SKScene{
     
     var areaBlur = SKSpriteNode()
@@ -41,11 +43,12 @@ class GameOverScene: SKScene{
         
         
         let defaults = UserDefaults()
-        var highScore = defaults.integer(forKey: "highScoreSaved")
+        highScore = defaults.integer(forKey: "highScoreSaved")
         
         if gameScore > highScore {
             highScore = gameScore
             defaults.set(highScore, forKey: "highScoreSaved")
+            NotificationCenter.default.post(name: NSNotification.Name("GCSaveHighScore"), object: nil)
         }
         
         

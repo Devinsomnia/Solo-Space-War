@@ -281,6 +281,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let waitToChangeScene = SKAction.wait(forDuration: 1)
         let changeSceneSequence = SKAction.sequence([waitToChangeScene, scaneChangeAction])
         self.run(changeSceneSequence)
+        
+        
     
     }
     

@@ -90,6 +90,30 @@ class MainScene: SKScene{
                 })
             }
             
+            if nameOfTappedNode == "GameCenterButton"{
+                
+                tappedNode.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 0.2),SKAction.fadeAlpha(to: 1.0, duration: 0.15) ]), completion: {
+                    NotificationCenter.default.post(name: NSNotification.Name("showLeaderBoard"), object: nil)
+                })
+                
+                //NotificationCenter.default.post(name: NSNotification.Name(rawValue:"showGlobalScore"), object: nil)
+                
+                
+                
+//                tappedNode.name = ""
+//                tappedNode.removeAllActions()
+//
+//                tappedNode.run(SKAction.sequence([SKAction.fadeAlpha(to: 0, duration: 0.2),SKAction.fadeAlpha(to: 1.0, duration: 0.15) ]), completion: {
+//                    let sceneMovement = GameScene(size: self.size)
+//                    sceneMovement.scaleMode = self.scaleMode
+//
+//                    let sceneTransition = SKTransition.fade(withDuration: 0.5)
+//
+//                    //SKTransition.reveal(with: SKTransitionDirection.left, duration: 0.5)
+//                    self.view!.presentScene(sceneMovement, transition: sceneTransition)
+//                })
+            }
+            
         }
         
     }

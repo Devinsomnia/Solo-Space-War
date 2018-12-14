@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F71263F821C2BE41000770E2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71263F721C2BE41000770E2 /* UIColorExtension.swift */; };
+		F71263FD21C3AD02000770E2 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71263FC21C3AD02000770E2 /* GameKit.framework */; };
 		F71893B621BD1C9400D97EFB /* bulletSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B521BD1C9400D97EFB /* bulletSound.m4a */; };
 		F71893B821BD21C100D97EFB /* RandomFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71893B721BD21C100D97EFB /* RandomFunc.swift */; };
 		F71893BA21BD3A5000D97EFB /* explosionSound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = F71893B921BD3A5000D97EFB /* explosionSound.m4a */; };
@@ -33,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		F71263F721C2BE41000770E2 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		F71263FC21C3AD02000770E2 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		F71263FE21C3AD22000770E2 /* Solo Space War.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Solo Space War.entitlements"; sourceTree = "<group>"; };
 		F71893B521BD1C9400D97EFB /* bulletSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bulletSound.m4a; sourceTree = "<group>"; };
 		F71893B721BD21C100D97EFB /* RandomFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomFunc.swift; sourceTree = "<group>"; };
 		F71893B921BD3A5000D97EFB /* explosionSound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosionSound.m4a; sourceTree = "<group>"; };
@@ -63,12 +66,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71263FD21C3AD02000770E2 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F71263F921C3ACF9000770E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F71263FC21C3AD02000770E2 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F71893B421BD1C7400D97EFB /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +96,7 @@
 			children = (
 				F73C649A21B59B0000CE4138 /* Solo Space War */,
 				F73C649921B59B0000CE4138 /* Products */,
+				F71263F921C3ACF9000770E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +111,7 @@
 		F73C649A21B59B0000CE4138 /* Solo Space War */ = {
 			isa = PBXGroup;
 			children = (
+				F71263FE21C3AD22000770E2 /* Solo Space War.entitlements */,
 				F71893B421BD1C7400D97EFB /* Sounds */,
 				F73C64BB21B5B53F00CE4138 /* Fonts */,
 				F73C64B421B59E7400CE4138 /* Extensions */,
@@ -179,6 +193,14 @@
 				TargetAttributes = {
 					F73C649721B59B0000CE4138 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.GameCenter.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -382,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Solo Space War/Solo Space War.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79QK3U5S2H;
 				INFOPLIST_FILE = "Solo Space War/Info.plist";
@@ -390,7 +413,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tuncaycansz.Solo-Space-War";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tuncaycansiz.SoloSpaceWar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -401,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Solo Space War/Solo Space War.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79QK3U5S2H;
 				INFOPLIST_FILE = "Solo Space War/Info.plist";
@@ -409,7 +433,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tuncaycansz.Solo-Space-War";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tuncaycansiz.SoloSpaceWar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
