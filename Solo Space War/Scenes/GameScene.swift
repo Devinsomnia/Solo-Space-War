@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(background)
         
         }
-        spaceShip = spriteNode(imageName: "SpaceShip", valueName: "SpaceShip", positionZ: 2, positionX: self.size.width * 0.5, positionY: -self.size.height - spaceShip.frame.size.height)
+        spaceShip = spriteNode(imageName: "SpaceShip2", valueName: "SpaceShip", positionZ: 2, positionX: self.size.width * 0.5, positionY: -self.size.height - spaceShip.frame.size.height)
         spaceShip.setScale(0.85)
         
         spaceShip.physicsBody = SKPhysicsBody(rectangleOf: spaceShip.size)
@@ -186,7 +186,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         tapToStartLabel.run(deleteSequence)
         
-        let moveShipOnToScreenActionShip = SKAction.moveTo(y: self.size.height * 0.2, duration: 0.5)
+        let moveShipOnToScreenActionShip = SKAction.moveTo(y: self.size.height * 0.15, duration: 0.5)
         let startLevelAction = SKAction.run(spawnObjectLevel)
         let startGameSequence = SKAction.sequence([moveShipOnToScreenActionShip,startLevelAction])
         spaceShip.run(startGameSequence)
