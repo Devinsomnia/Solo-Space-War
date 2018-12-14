@@ -1,0 +1,6 @@
+framework module Pods_Solo_Space_War {
+  umbrella header "Pods-Solo Space War-umbrella.h"
+
+  export *
+  module * { export * }
+}

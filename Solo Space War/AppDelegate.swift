@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //initialize Firebase
+        FirebaseApp.configure()
+        
+        //initialize Admob
+        //ca-app-pub-3940256099942544/1712485313 test code
+        //GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/1712485313")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6969387110477360/1652051348")
+        
+        //ca-app-pub-6969387110477360/1652051348 my code
+        
+        
         return true
     }
 
@@ -40,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

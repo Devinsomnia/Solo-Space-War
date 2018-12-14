@@ -15,6 +15,9 @@ class GameOverScene: SKScene{
     var areaBlur = SKSpriteNode()
     
     override func didMove(to view: SKView) {
+        
+        NotificationCenter.default.post(name: NSNotification.Name("showRewardVideo"), object: nil)
+        
         let background = spriteNode(imageName: "GamePlay_BG", valueName: "GamePlay_BG", positionZ: 0, positionX: self.size.width * 0.5, positionY: self.size.height * 0.5)
         background.size = self.size
         self.addChild(background)
