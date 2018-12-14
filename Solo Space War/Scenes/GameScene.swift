@@ -8,9 +8,11 @@
 
 import SpriteKit
 
+var gameScore = 0
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
-    var gameScore = 0
+    
     var gameScoreLabel = SKLabelNode()
     var gameScoreImages = SKSpriteNode()
     
@@ -73,7 +75,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        
+        gameScore = 0
+        
         self.physicsWorld.contactDelegate = self
+        
+        
         
         
         for i in 0...1{

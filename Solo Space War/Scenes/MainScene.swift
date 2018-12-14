@@ -27,7 +27,7 @@ class MainScene: SKScene{
         self.addChild(startButton)
 
         
-        let optionsButton = spriteNode(imageName: "OptionsButton", valueName: "OptionsButton", positionZ: 2, positionX: self.size.width * 0.5, positionY: self.size.height * 0.45)
+        let optionsButton = spriteNode(imageName: "GameCenterButton", valueName: "GameCenterButton", positionZ: 2, positionX: self.size.width * 0.5, positionY: self.size.height * 0.45)
         //optionsButton.setScale(0.5)
         self.addChild(optionsButton)
 
